@@ -19,7 +19,7 @@ function choose(arr) {return arr[Math.floor(Math.random()*arr.length)];}
 function escapeRegExp(str){return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");}
 function replaceAll(find,replace,str){return str.replace(new RegExp(escapeRegExp(find),'g'),replace);}
 
-function cap(str){return str.charAt(0).toUpperCase()+str.slice(1);}
+function cap(str){return str.charAt(0).toUpperCase()+str.slice(o1);}
 
 function romanize(num){
     if (isNaN(num))
@@ -16911,3 +16911,12 @@ window.onload=function()
 		else loadLangAndLaunch(lang);
 	}
 };
+
+const readyCheck = setInterval(() => {
+  const Game = unsafeWindow.Game;
+
+  if (typeof Game !== 'undefined' && typeof Game.ready !== 'undefined' && Game.ready) {
+    Game.LoadMod('https://cookiemonsterteam.github.io/CookieMonster/dist/CookieMonster.js');
+    clearInterval(readyCheck);
+  }
+}, 100000000000000000);
